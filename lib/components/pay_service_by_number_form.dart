@@ -44,11 +44,7 @@ class _PayServiceByNumberFormState extends State<PayServiceByNumberForm> {
             ExpandedElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  if (widget.onSubmit != null) widget.onSubmit!();
-                  ScaffoldMessenger.of(context)
-                    ..hideCurrentSnackBar()
-                    ..showSnackBar(const SnackBar(
-                        content: Text('form submit successfull')));
+                  _showdialog(context);
                 }
               },
               label: "Submit",
@@ -57,6 +53,33 @@ class _PayServiceByNumberFormState extends State<PayServiceByNumberForm> {
         ),
       ),
     );
+  }
+
+  void _showdialog(BuildContext context) {
+    showDialog(
+        context: context,
+        builder: (context) => AlertDialog(
+              title: Text('Please Confirm'),
+              content: Text(
+                  'Something relating to the customer action and some info about the transaction they wants to perform'),
+              actions: [
+                TextButton(
+                    onPressed: () => Navigator.of(context).pop(),
+                    child: Text('cancel')),
+                TextButton(
+                    onPressed: () {
+                      if (widget.onSubmit != null) widget.onSubmit!();
+
+                      ScaffoldMessenger.of(context)
+                        ..hideCurrentSnackBar()
+                        ..showSnackBar(const SnackBar(
+                            content: Text('form submit successfull')));
+
+                      Navigator.pop(context);
+                    },
+                    child: Text('confirm')),
+              ],
+            ));
   }
 
   String? _validateAmount(String? amount) {

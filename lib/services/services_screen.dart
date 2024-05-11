@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:money/screens/services/data_bundle_service.dart';
-import 'package:money/screens/services/edsa_service.dart';
-import 'package:money/screens/services/topup_service.dart';
+import 'package:money/services/data_bundle_service.dart';
+import 'package:money/services/edsa_service.dart';
+import 'package:money/services/topup_service.dart';
 
 enum ServiceType {
   edsa(Icon(Icons.power), EdsaService()),
   topUp(Icon(Icons.phone_callback), TopupService()),
-  dataDundle(Icon(Icons.signal_cellular_alt), DataBundleService());
+  dataDundle(Icon(Icons.signal_cellular_alt), DataBundleService()),
+  ;
 
   const ServiceType(this.icon, this.service);
 

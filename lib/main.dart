@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:money/screens/screens.dart';
+import 'package:money/services/services_screen.dart';
 
 void main() {
   runApp(const MainApp());
